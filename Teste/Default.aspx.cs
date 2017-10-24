@@ -13,17 +13,16 @@ namespace Teste
 	
 	public partial class Default : System.Web.UI.Page
 	{
-
-
+		
 		protected void Page_Load(object sender, EventArgs args)
 		{
-
 			atualizarTabela ();
 
 			if (!Page.IsPostBack) {
 				listarPessoa ();
 				listarCidadeOrigem ();
 				listarCidadeDestino ();
+
 			}
 		}
 
@@ -203,71 +202,71 @@ namespace Teste
 			Transporte t;
 			string x = dropPessoa.SelectedValue;
 			Pessoa p = PessoaDao.recuperar (Convert.ToInt32 (x));
-			if (aviao.Checked) {
+			if (listaTransporte.SelectedValue == "aviao") {
 				t = new Aviao ();
-				t.tipo = aviao.Text;
+				t.tipo = listaTransporte.SelectedItem.Text;
 				t.origem = dropEstOrigem.Text;
 				t.destino = dropEstDestino.Text;
 				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text;
-				t.destino = dropCidDestino.Text;
+				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
+				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
 
 				TransporteDao.inserir (t, p);
 
 				return;
 
-			} else if (carro.Checked) {
+			} else if (listaTransporte.SelectedValue == "carro") {
 				t = new TransporteProprio ();
-				t.tipo = carro.Text;
+				t.tipo = listaTransporte.SelectedItem.Text;
 				t.origem = dropEstOrigem.Text;
 				t.destino = dropEstDestino.Text;
 				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text;
-				t.destino = dropCidDestino.Text;
+				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
+				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";;
 
 				TransporteDao.inserir (t, p);
 
 				return;
 
-			} else if (moto.Checked) {
+			} else if (listaTransporte.SelectedValue == "moto") {
 				t = new TransporteProprio ();
-				t.tipo = moto.Text;
+				t.tipo = listaTransporte.SelectedItem.Text;
 				t.origem = dropEstOrigem.Text;
 				t.destino = dropEstDestino.Text;
 				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text;
-				t.destino = dropCidDestino.Text;
+				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
+				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
 
 				TransporteDao.inserir (t, p);
 
 				return;
 
-			} else if (bicicleta.Checked) {
+			} else if (listaTransporte.SelectedValue == "bicicleta") {
 				t = new TransporteProprio ();
-				t.tipo = bicicleta.Text;
-				t.origem = dropEstOrigem.Text;
+				t.tipo = listaTransporte.SelectedItem.Text;
+				t.origem = dropEstOrigem.Text ;
 				t.destino = dropEstDestino.Text;
 				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text;
-				t.destino = dropCidDestino.Text;
+				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
+				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
 
 				TransporteDao.inserir (t, p);
 
 				return;
 
-			} else if (onibus.Checked) {
+			} else if (listaTransporte.SelectedValue == "onibus") {
 				t = new Onibus ();
-				t.tipo = onibus.Text;
+				t.tipo = listaTransporte.SelectedItem.Text;
 				t.origem = dropEstOrigem.Text;
 				t.destino = dropEstDestino.Text;
 				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text;
-				t.destino = dropCidDestino.Text;
+				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
+				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
 
 				TransporteDao.inserir (t, p);
 
@@ -280,10 +279,21 @@ namespace Teste
 			limparPagina ();
 		}
 
-
 		protected void BulletedList_Click(object sender, BulletedListEventArgs e)
 		{
 			multiview.ActiveViewIndex = Convert.ToInt32(tabs.Items[e.Index].Value);
+		}
+
+
+		protected void RadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listaTransporte.SelectedValue == "aviao") {
+				panel1.Visible = true;
+				panel2.Visible = false;
+			} else {
+				panel2.Visible = true;
+				panel1.Visible = false;
+			}
 
 		}
 

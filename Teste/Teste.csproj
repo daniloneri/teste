@@ -217,6 +217,7 @@
     <Content Include="scripts\src\jquery.maskedinput.js" />
     <Content Include="App_Code\Mensagem.js" />
     <Content Include="css\stilo.css" />
+    <Content Include="scripts\dist\jquery.inputmask.bundle.min.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">

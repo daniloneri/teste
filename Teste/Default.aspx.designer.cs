@@ -55,15 +55,19 @@ namespace Teste {
 		
 		protected System.Web.UI.WebControls.DropDownList dropPessoa;
 		
-		protected System.Web.UI.WebControls.RadioButton aviao;
+		protected System.Web.UI.WebControls.RadioButtonList listaTransporte;
 		
-		protected System.Web.UI.WebControls.RadioButton onibus;
+		protected System.Web.UI.WebControls.Panel panel1;
 		
-		protected System.Web.UI.WebControls.RadioButton carro;
+		protected System.Web.UI.WebControls.TextBox milhas;
 		
-		protected System.Web.UI.WebControls.RadioButton moto;
+		protected System.Web.UI.WebControls.TextBox valorMilha;
 		
-		protected System.Web.UI.WebControls.RadioButton bicicleta;
+		protected System.Web.UI.WebControls.Panel panel2;
+		
+		protected System.Web.UI.WebControls.TextBox km;
+		
+		protected System.Web.UI.WebControls.TextBox valorKm;
 		
 		protected System.Web.UI.WebControls.DropDownList dropEstOrigem;
 		

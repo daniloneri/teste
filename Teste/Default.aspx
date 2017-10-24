@@ -117,18 +117,49 @@
 					</div>
 					<div class="field">
 						<label>Tipo de Transporte</label>
+						<asp:RadioButtonList CssClass="radioButtonList" AutoPostBack="true" OnSelectedIndexChanged="RadioButtonList_SelectedIndexChanged" RepeatDirection="Horizontal" id="listaTransporte" runat="server">
+							<asp:ListItem id="aviao" Value="aviao">Avião</asp:ListItem>
+							<asp:ListItem id="onibus" Value="onibus">Ônibus</asp:ListItem>
+							<asp:ListItem id="carro" Value="carro">Carro</asp:ListItem>
+							<asp:ListItem id="moto" Value="moto">Moto</asp:ListItem>
+							<asp:ListItem id="bicicleta" Value="bicicleta">Bicicleta</asp:ListItem>
+						</asp:RadioButtonList>
+
+					<%-- <label>Tipo de Transporte</label>
 						<div class="inline fields">
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="aviao" Checked="true" Text="Avião" GroupName="radio" runat="server"/></div>
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="onibus" Text="Ônibus" GroupName="radio" runat="server"/></div>
+							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" Checked="true" OnCheckedChanged="aviao_CheckedChanged" id="aviao" Text="Avião" GroupName="radio" AutoPostBack="true" runat="server"/></div>
+							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="onibus" Text="Ônibus" OnCheckedChanged="onibus_CheckedChanged" GroupName="radio" runat="server"/></div>
 							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="carro" Text="Carro" GroupName="radio" runat="server"/></div>
 							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="moto" Text="Moto" GroupName="radio" runat="server"/></div>
 							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="bicicleta" Text="Bicicleta" GroupName="radio" runat="server"/></div>
-						</div>
-					</div>
-					
+						</div>  --%>	
+					</div> 				
 				</div>
+				<asp:Panel id="panel1" Visible="false" runat="server">
+				<div class="two fields">
+					<div class="field">
+		    			<label>Milhas</label>
+		    			<asp:TextBox data-validate="" id="milhas" placeholder="Milhas" runat="server" />
+	    			</div>
+	    			<div class="field">
+		    			<label>Valor por Milha</label>
+		    			<asp:TextBox data-validate="" id="valorMilha" placeholder="R$" runat="server" />
+	    			</div>
+	  			</div>
+	  			</asp:Panel>
 
-				<div id="veiculos"></div>
+	  			<asp:Panel id="panel2" Visible="false" runat="server">
+	  			<div class="two fields">
+		  			<div class="field">
+		    			<label>Km</label>
+		    			<asp:TextBox  data-validate="" id="km" placeholder="Km" runat="server" />
+		  			</div>
+		  			<div class="field">
+		    			<label>Valor por Km</label>
+		    			<asp:TextBox  data-validate="" id="valorKm" placeholder="R$" runat="server" />
+		  			</div>
+	  			</div>
+	  			</asp:Panel>
 
 				<div class="two fields">
 					<div class="field">
@@ -221,7 +252,7 @@
 
 	  			 <asp:GridView CssClass="ui celled striped table" GridLines="None" id="tabelaTransporte" runat="server" AutoGenerateColumns="false" >
 	  				<Columns>   
-	  					<asp:BoundField DataField="descricaoCliente" HeaderText="Nome" />
+	  					<asp:BoundField DataField="descricaoCliente" HeaderText="Nome"/>
            				<asp:BoundField DataField="tipo" HeaderText="Tipo de Transporte" />
            				<asp:BoundField DataField="origem" HeaderText="Origem" /> 
            				<asp:BoundField DataField="destino" HeaderText="Destino" /> 
@@ -241,7 +272,7 @@
 	<script>$('.ui.checkbox').checkbox();</script>
 
 	<script>
-	//Controle de abas padrão antigo
+	//Controle de abas
     $(".tabs").addClass('ui top attached tabular stackable menu');
     $("#abas li[class!='atual'] a").addClass('item');
     $("#abas li[class='atual'] a").addClass('item azul active');
@@ -349,6 +380,7 @@
          });
     </script> 
 
+  
     <script>
     $('.ui.dropdown').dropdown();
     </script>
