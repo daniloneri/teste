@@ -1,0 +1,6 @@
+/home/logisk/Projetos/Teste/Teste/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/home/logisk/Projetos/Teste/Teste/bin/Teste.pdb
+/home/logisk/Projetos/Teste/Teste/bin/Teste.dll
+/home/logisk/Projetos/Teste/Teste/obj/Debug/Teste.dll
+/home/logisk/Projetos/Teste/Teste/obj/Debug/Teste.pdb
+/home/logisk/Projetos/Teste/Teste/bin/mysql.data.dll

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{BA13FC9A-7F35-4BA8-837A-9A64921761A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Teste</RootNamespace>
+    <AssemblyName>Teste</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\Documentos\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="web.config" />
+    <Content Include="Default.aspx" />
+    <Content Include="Semantic\package.js" />
+    <Content Include="Semantic\semantic.css" />
+    <Content Include="Semantic\semantic.js" />
+    <Content Include="Semantic\semantic.min.css" />
+    <Content Include="Semantic\semantic.min.js" />
+    <Content Include="Semantic\components\accordion.css" />
+    <Content Include="Semantic\components\accordion.js" />
+    <Content Include="Semantic\components\accordion.min.css" />
+    <Content Include="Semantic\components\accordion.min.js" />
+    <Content Include="Semantic\components\ad.css" />
+    <Content Include="Semantic\components\ad.min.css" />
+    <Content Include="Semantic\components\api.js" />
+    <Content Include="Semantic\components\api.min.js" />
+    <Content Include="Semantic\components\breadcrumb.css" />
+    <Content Include="Semantic\components\breadcrumb.min.css" />
+    <Content Include="Semantic\components\button.css" />
+    <Content Include="Semantic\components\button.min.css" />
+    <Content Include="Semantic\components\card.css" />
+    <Content Include="Semantic\components\card.min.css" />
+    <Content Include="Semantic\components\checkbox.css" />
+    <Content Include="Semantic\components\checkbox.js" />
+    <Content Include="Semantic\components\checkbox.min.css" />
+    <Content Include="Semantic\components\checkbox.min.js" />
+    <Content Include="Semantic\components\colorize.js" />
+    <Content Include="Semantic\components\colorize.min.js" />
+    <Content Include="Semantic\components\comment.css" />
+    <Content Include="Semantic\components\comment.min.css" />
+    <Content Include="Semantic\components\container.css" />
+    <Content Include="Semantic\components\container.min.css" />
+    <Content Include="Semantic\components\dimmer.css" />
+    <Content Include="Semantic\components\dimmer.js" />
+    <Content Include="Semantic\components\dimmer.min.css" />
+    <Content Include="Semantic\components\dimmer.min.js" />
+    <Content Include="Semantic\components\divider.css" />
+    <Content Include="Semantic\components\divider.min.css" />
+    <Content Include="Semantic\components\dropdown.css" />
+    <Content Include="Semantic\components\dropdown.js" />
+    <Content Include="Semantic\components\dropdown.min.css" />
+    <Content Include="Semantic\components\dropdown.min.js" />
+    <Content Include="Semantic\components\embed.css" />
+    <Content Include="Semantic\components\embed.js" />
+    <Content Include="Semantic\components\embed.min.css" />
+    <Content Include="Semantic\components\embed.min.js" />
+    <Content Include="Semantic\components\feed.css" />
+    <Content Include="Semantic\components\feed.min.css" />
+    <Content Include="Semantic\components\flag.css" />
+    <Content Include="Semantic\components\flag.min.css" />
+    <Content Include="Semantic\components\form.css" />
+    <Content Include="Semantic\components\form.js" />
+    <Content Include="Semantic\components\form.min.css" />
+    <Content Include="Semantic\components\form.min.js" />
+    <Content Include="Semantic\components\grid.css" />
+    <Content Include="Semantic\components\grid.min.css" />
+    <Content Include="Semantic\components\header.css" />
+    <Content Include="Semantic\components\header.min.css" />
+    <Content Include="Semantic\components\icon.css" />
+    <Content Include="Semantic\components\icon.min.css" />
+    <Content Include="Semantic\components\image.css" />
+    <Content Include="Semantic\components\image.min.css" />
+    <Content Include="Semantic\components\input.css" />
+    <Content Include="Semantic\components\input.min.css" />
+    <Content Include="Semantic\components\item.css" />
+    <Content Include="Semantic\components\item.min.css" />
+    <Content Include="Semantic\components\label.css" />
+    <Content Include="Semantic\components\label.min.css" />
+    <Content Include="Semantic\components\list.css" />
+    <Content Include="Semantic\components\list.min.css" />
+    <Content Include="Semantic\components\loader.css" />
+    <Content Include="Semantic\components\loader.min.css" />
+    <Content Include="Semantic\components\menu.css" />
+    <Content Include="Semantic\components\menu.min.css" />
+    <Content Include="Semantic\components\message.css" />
+    <Content Include="Semantic\components\message.min.css" />
+    <Content Include="Semantic\components\modal.css" />
+    <Content Include="Semantic\components\modal.js" />
+    <Content Include="Semantic\components\modal.min.css" />
+    <Content Include="Semantic\components\modal.min.js" />
+    <Content Include="Semantic\components\nag.css" />
+    <Content Include="Semantic\components\nag.js" />
+    <Content Include="Semantic\components\nag.min.css" />
+    <Content Include="Semantic\components\nag.min.js" />
+    <Content Include="Semantic\components\popup.css" />
+    <Content Include="Semantic\components\popup.js" />
+    <Content Include="Semantic\components\popup.min.css" />
+    <Content Include="Semantic\components\popup.min.js" />
+    <Content Include="Semantic\components\progress.css" />
+    <Content Include="Semantic\components\progress.js" />
+    <Content Include="Semantic\components\progress.min.css" />
+    <Content Include="Semantic\components\progress.min.js" />
+    <Content Include="Semantic\components\rail.css" />
+    <Content Include="Semantic\components\rail.min.css" />
+    <Content Include="Semantic\components\rating.css" />
+    <Content Include="Semantic\components\rating.js" />
+    <Content Include="Semantic\components\rating.min.css" />
+    <Content Include="Semantic\components\rating.min.js" />
+    <Content Include="Semantic\components\reset.css" />
+    <Content Include="Semantic\components\reset.min.css" />
+    <Content Include="Semantic\components\reveal.css" />
+    <Content Include="Semantic\components\reveal.min.css" />
+    <Content Include="Semantic\components\search.css" />
+    <Content Include="Semantic\components\search.js" />
+    <Content Include="Semantic\components\search.min.css" />
+    <Content Include="Semantic\components\search.min.js" />
+    <Content Include="Semantic\components\segment.css" />
+    <Content Include="Semantic\components\segment.min.css" />
+    <Content Include="Semantic\components\shape.css" />
+    <Content Include="Semantic\components\shape.js" />
+    <Content Include="Semantic\components\shape.min.css" />
+    <Content Include="Semantic\components\shape.min.js" />
+    <Content Include="Semantic\components\sidebar.css" />
+    <Content Include="Semantic\components\sidebar.js" />
+    <Content Include="Semantic\components\sidebar.min.css" />
+    <Content Include="Semantic\components\sidebar.min.js" />
+    <Content Include="Semantic\components\site.css" />
+    <Content Include="Semantic\components\site.js" />
+    <Content Include="Semantic\components\site.min.css" />
+    <Content Include="Semantic\components\site.min.js" />
+    <Content Include="Semantic\components\state.js" />
+    <Content Include="Semantic\components\state.min.js" />
+    <Content Include="Semantic\components\statistic.css" />
+    <Content Include="Semantic\components\statistic.min.css" />
+    <Content Include="Semantic\components\step.css" />
+    <Content Include="Semantic\components\step.min.css" />
+    <Content Include="Semantic\components\sticky.css" />
+    <Content Include="Semantic\components\sticky.js" />
+    <Content Include="Semantic\components\sticky.min.css" />
+    <Content Include="Semantic\components\sticky.min.js" />
+    <Content Include="Semantic\components\tab.css" />
+    <Content Include="Semantic\components\tab.js" />
+    <Content Include="Semantic\components\tab.min.css" />
+    <Content Include="Semantic\components\tab.min.js" />
+    <Content Include="Semantic\components\table.css" />
+    <Content Include="Semantic\components\table.min.css" />
+    <Content Include="Semantic\components\transition.css" />
+    <Content Include="Semantic\components\transition.js" />
+    <Content Include="Semantic\components\transition.min.css" />
+    <Content Include="Semantic\components\transition.min.js" />
+    <Content Include="Semantic\components\video.css" />
+    <Content Include="Semantic\components\video.js" />
+    <Content Include="Semantic\components\video.min.css" />
+    <Content Include="Semantic\components\video.min.js" />
+    <Content Include="Semantic\components\visibility.js" />
+    <Content Include="Semantic\components\visibility.min.js" />
+    <Content Include="Semantic\components\visit.js" />
+    <Content Include="Semantic\components\visit.min.js" />
+    <Content Include="Semantic\themes\default\assets\fonts\icons.eot" />
+    <Content Include="Semantic\themes\default\assets\fonts\icons.otf" />
+    <Content Include="Semantic\themes\default\assets\fonts\icons.svg" />
+    <Content Include="Semantic\themes\default\assets\fonts\icons.ttf" />
+    <Content Include="Semantic\themes\default\assets\fonts\icons.woff" />
+    <Content Include="Semantic\themes\default\assets\images\flags.png" />
+    <Content Include="scripts\demo\datepicker.html" />
+    <Content Include="scripts\demo\index.html" />
+    <Content Include="scripts\dist\jquery.maskedinput.js" />
+    <Content Include="scripts\dist\jquery.maskedinput.min.js" />
+    <Content Include="scripts\lib\jquery-1.8.3.min.js" />
+    <Content Include="scripts\spec\Backspace.Spec.js" />
+    <Content Include="scripts\spec\Delete.spec.js" />
+    <Content Include="scripts\spec\Escape.Spec.js" />
+    <Content Include="scripts\spec\Focus.Spec.js" />
+    <Content Include="scripts\spec\Paste.Spec.js" />
+    <Content Include="scripts\spec\Raw.Spec.js" />
+    <Content Include="scripts\spec\Setup.Spec.js" />
+    <Content Include="scripts\spec\SpecRunner.html" />
+    <Content Include="scripts\spec\Typing.Spec.js" />
+    <Content Include="scripts\spec\lib\jquery.keymasher.js" />
+    <Content Include="scripts\spec\lib\matchers.js" />
+    <Content Include="scripts\spec\lib\jasmine\jasmine-html.js" />
+    <Content Include="scripts\spec\lib\jasmine\jasmine.css" />
+    <Content Include="scripts\spec\lib\jasmine\jasmine.js" />
+    <Content Include="scripts\spec\lib\jasmine-species\jasmine-be-calm.css" />
+    <Content Include="scripts\spec\lib\jasmine-species\jasmine-grammar.js" />
+    <Content Include="scripts\spec\lib\jasmine-species\jasmine-reporting.js" />
+    <Content Include="scripts\src\jquery.maskedinput.js" />
+    <Content Include="App_Code\Mensagem.js" />
+    <Content Include="css\stilo.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Pessoa.cs" />
+    <Compile Include="App_Code\PessoaDao.cs" />
+    <Compile Include="App_Code\Conexao.cs" />
+    <Compile Include="App_Code\Municipio.cs" />
+    <Compile Include="App_Code\Endereco.cs" />
+    <Compile Include="App_Code\EnderecoDao.cs" />
+    <Compile Include="App_Code\MunicipioDao.cs" />
+    <Compile Include="App_Code\Transporte.cs" />
+    <Compile Include="App_Code\TransporteProprio.cs" />
+    <Compile Include="App_Code\TransporteOnibus.cs" />
+    <Compile Include="App_Code\TransporteAereo.cs" />
+    <Compile Include="App_Code\TransporteDao.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Semantic\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Code\" />
+    <Folder Include="css\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Semantic\.versions" />
+    <None Include="Semantic\LICENSE" />
+    <None Include="Semantic\README.md" />
+    <None Include="Semantic\package.json" />
+    <None Include="Semantic\themes\default\assets\fonts\icons.woff2" />
+    <None Include="scripts\.gitignore" />
+    <None Include="scripts\Jakefile" />
+    <None Include="scripts\LICENSE" />
+    <None Include="scripts\README.md" />
+    <None Include="scripts\maskedinput.jquery.json" />
+    <None Include="scripts\plugin.json" />
+    <None Include="scripts\spec\lib\jasmine\MIT.LICENSE" />
+    <None Include="scripts\spec\lib\jasmine-species\BSD.LICENSE" />
+    <None Include="scripts\spec\lib\jasmine-species\version.json" />
+    <None Include="scripts\templates\jquery.maskedinput.template" />
+  </ItemGroup>
+</Project>

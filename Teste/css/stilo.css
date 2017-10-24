@@ -1,0 +1,29 @@
+﻿  #abas ul .atual {
+    background: #FFF;
+    color: rgba(0,0,0,.95);
+    border-top-width: 1px;
+    border-color: #D4D4D5;
+    font-weight: 700;
+    margin-bottom: -1px;
+    box-shadow: none;
+    border-radius: .28571429rem .28571429rem 0 0 !important;
+}
+
+#abas, ul, li {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#abas .ui.menu .azul.item.active {
+    background: #F9FCFE;
+}
+
+#abas .ui.tabular.menu .item {
+    border-left: 1px solid #d4d4d5;
+    border-right: 1px solid #d4d4d5;
+    border-top: 1px solid #d4d4d5;
+    border-radius: .28571429rem .28571429rem 0 0;
+}
