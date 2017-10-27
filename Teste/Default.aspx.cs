@@ -49,9 +49,7 @@ namespace Teste
 
 			if (e.CommandName.Equals("Editar"))
 			{
-				
-				cancelar.Visible = true;
-				check.Visible = false;
+				termos.Visible = false;
 
 				this.id.Value = id.ToString();
 				nome.Text = p.nome;
@@ -63,6 +61,7 @@ namespace Teste
 				cep.Text = p.endereco.cep;
 				uf.Text = p.endereco.municipio.uf;
 
+				multiview.ActiveViewIndex = Convert.ToInt32(tabs.Items[0].Value);
 			}
 
 			if (e.CommandName.Equals ("Excluir")) 
@@ -119,7 +118,6 @@ namespace Teste
 			} 
 			else 
 			{
-
 				p = PessoaDao.recuperar (Convert.ToInt32(this.id.Value));
 				e = EnderecoDao.recuperar (Convert.ToInt32 (p.endereco.id));
 				m = MunicipioDao.recuperar (Convert.ToInt32 (e.municipio.id));
@@ -148,9 +146,8 @@ namespace Teste
 				
 		}
 
-		public void btnCancelar(object sender, EventArgs args)
-		{
-			limparPagina ();			
+		protected void btnCancelar(object sender, EventArgs args){
+			limparPagina ();
 		}
 
 		protected void mudarEstadoOrigem(object sender, EventArgs args)
@@ -212,12 +209,7 @@ namespace Teste
 			t.destino = dropCidDestino.Text + "(" + dropEstDestino.SelectedValue + ")";
 			TransporteDao.inserir (t, p);
 		}
-
-		public void btnCancelarTransporte (object sender, EventArgs args)
-		{
-			limparPagina ();
-		}
-
+			
 		protected void BulletedList_Click(object sender, BulletedListEventArgs e)
 		{
 			multiview.ActiveViewIndex = Convert.ToInt32(tabs.Items[e.Index].Value);
@@ -237,16 +229,15 @@ namespace Teste
 		protected void tabelaTransporte_RowCommand(object sender, GridViewCommandEventArgs e)
 		{
 			int n = Convert.ToInt32 (e.CommandArgument.ToString());
-			string nome = Server.HtmlDecode(tabelaTransporte.Rows [n].Cells [0].Text);
+			int id = Convert.ToInt32(tabelaTransporte.Rows [n].Cells [0].Text);
 
 			if(e.CommandName.Equals("Detalhes"))
 			{
 				panel.Visible = true;
-				tabelaDetalhes.DataSource = TransporteDao.ListarDetalhes(nome);
+				tabelaDetalhes.DataSource = TransporteDao.ListarDetalhes(id);
 				tabelaDetalhes.DataBind ();
 			}
 		}
-
 
 		protected void btnVoltar_Click(object sender, EventArgs e)
 		{

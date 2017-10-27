@@ -7,8 +7,7 @@
 		<title>Cadastro</title>
 		<link rel="stylesheet" type="text/css" href="Semantic/semantic.min.css">
 		<link rel="stylesheet" type="text/css" href="css/stilo.css">
-		<script
-	  		src="https://code.jquery.com/jquery-3.1.1.min.js"
+		<script	src="https://code.jquery.com/jquery-3.1.1.min.js"
 	  		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 	  		crossorigin="anonymous"></script>
 	  		<script src="scripts/dist/jquery.maskedinput.min.js"></script>
@@ -70,16 +69,20 @@
         					<asp:TextBox name="numero" data-validate="numerovazio" id="numero" placeholder="Número" runat="server" />
       					</div>
     				</div> 
+    				<asp:Panel id="termos" runat="server" Visible="true">
 	  				<div class="required inline field">
 	    				<div class="ui checkbox" >
 	      					<asp:CheckBox id="check" runat="server"/>
 	      					<label>Eu aceito os termos e condições</label>
 	    				</div>
 	  				</div>
-	  			<asp:Button class="ui primary button" id="cadastrar" type="submit" Text="Enviar" OnClick="btnCadastrar" runat="server"/>
-	  			<asp:Button class="ui red button" id="cancelar" Visible="false" Text="Cancelar" OnClick="btnCancelar" runat="server"/>  		
-	
-				</asp:View>
+	  				</asp:Panel>
+
+	  				<div class="ui hidden divider"></div>
+
+	  			<asp:Button class="ui primary button" id="cadastrar" Text="Enviar" OnClick="btnCadastrar" runat="server"/>  		
+	  			<asp:LinkButton class="ui red button" id="cancelar" Text="Cancelar" OnClick="btnCancelar" runat="server"/>  	
+	  			</asp:View>
 
 				<asp:View id="aba2" runat="server">
 					  <!-- Tabela !-->
@@ -124,15 +127,6 @@
 							<asp:ListItem id="moto" Value="moto">Moto</asp:ListItem>
 							<asp:ListItem id="bicicleta" Value="bicicleta">Bicicleta</asp:ListItem>
 						</asp:RadioButtonList>
-
-					<%-- <label>Tipo de Transporte</label>
-						<div class="inline fields">
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" Checked="true" OnCheckedChanged="aviao_CheckedChanged" id="aviao" Text="Avião" GroupName="radio" AutoPostBack="true" runat="server"/></div>
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="onibus" Text="Ônibus" OnCheckedChanged="onibus_CheckedChanged" GroupName="radio" runat="server"/></div>
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="carro" Text="Carro" GroupName="radio" runat="server"/></div>
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="moto" Text="Moto" GroupName="radio" runat="server"/></div>
-							<div class="field"><asp:RadioButton CssClass="ui radio checkbox" id="bicicleta" Text="Bicicleta" GroupName="radio" runat="server"/></div>
-						</div>  --%>	
 					</div> 				
 				</div>
 
@@ -143,7 +137,7 @@
 						</div>
 						<div class="field">
 			    			<asp:Label id="lblDistancia" runat="server"></asp:Label>
-			    			<asp:TextBox data-validate="" id="distancia" placeholder="Distância" runat="server" />
+			    			<asp:TextBox id="distancia" placeholder="Distância" runat="server" />
 		    			</div>
 	    			</div>	  			
 	    		</asp:Panel>
@@ -233,12 +227,13 @@
 					</div>
 				</div>
 				<asp:LinkButton class="ui primary button" id="cadastrarTransporte" Text="Enviar" OnClick="btnCadastrarTransporte" runat="server"/>
-	  			<asp:LinkButton class="ui red button" id="cancelarTransporte" Text="Cancelar" OnClick="btnCancelarTransporte" runat="server"/>
+	  			<div class="ui red reset button">Limpar</div>
 
 				<div class="ui hidden divider"></div>
 
 	  			 <asp:GridView CssClass="ui celled striped table" GridLines="None" id="tabelaTransporte" runat="server" AutoGenerateColumns="false" OnRowCommand="tabelaTransporte_RowCommand" >
 	  				<Columns> 
+	  					<asp:BoundField DataField="id" HeaderText="id" Visible="false"/>
 	  					<asp:BoundField DataField="nome" HeaderText="Nome"/>
 					    <asp:BoundField DataField="valorTotal" DataFormatString="{0:C2}" HeaderText="Gastos Totais"/>
            				<asp:TemplateField>           				
@@ -318,6 +313,15 @@
 	         }
 	       ]
 	  },
+	  dropdown: {
+        identifier  : 'dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a dropdown value'
+          }
+        ]
+      },
 	  bairrovazio: {
 	       identifier  : 'bairrovazio',
 	       rules: [

@@ -36,7 +36,7 @@ namespace Teste
 
 			MySqlCommand Query = new MySqlCommand();
 			Query.Connection = connection;
-			Query.CommandText = @"select distinct p.nome, sum(t.valor) as Valor_Total from transporte as t
+			Query.CommandText = @"select distinct p.nome, t.id, sum(t.valor) as Valor_Total from transporte as t
 								inner join pessoa as p on p.id=t.id_pessoa
 								group by p.nome";
 			MySqlDataReader dtreader = Query.ExecuteReader();
@@ -45,10 +45,8 @@ namespace Teste
 			while (dtreader.Read())
 			{
 				TransportePessoa t = new TransportePessoa();
-				t.nome = dtreader ["nome"].ToString();
-				//t.tipo = dtreader["Transporte"].ToString();
-				//t.numeroViagens = dtreader ["Num_Viagens"].ToString ();
-				//t.distanciaTotal = Convert.ToDouble(dtreader ["Distancia_Total"].ToString ());
+				t.id = Convert.ToInt32(dtreader ["id"].ToString());
+				t.nome = dtreader ["nome"].ToString ();
 				t.valorTotal = Convert.ToDouble(dtreader ["Valor_Total"].ToString ());
 
 				listaDeRetorno.Add(t);
@@ -56,34 +54,8 @@ namespace Teste
 			conexao.fecharConexao ();//Fecha Conexao
 			return listaDeRetorno;
 		} 	
-
-		/*public static List<Transporte> ListarTransporte(){
-			Conexao conexao = new Conexao ();
-			MySqlConnection connection = conexao.abrirConexao ();
-
-			MySqlCommand Query = new MySqlCommand();
-			Query.Connection = connection;
-			Query.CommandText = @"select * from transporte";
-			MySqlDataReader dtreader = Query.ExecuteReader();
-			List<Transporte> listaDeRetorno = new List<Transporte>();
-
-			while (dtreader.Read())
-			{
-				Transporte t = new Transporte();
-				t.id = Convert.ToInt32(dtreader ["id"].ToString());
-				t.tipo = dtreader["tipo"].ToString();
-				t.origem = dtreader ["origem"].ToString ();
-				t.destino = dtreader ["destino"].ToString ();
-				t.custo = Convert.ToDouble(dtreader ["valor"].ToString ());
-				t.descricaoCliente = PessoaDao.recuperar (Convert.ToInt32 (dtreader ["id_pessoa"].ToString ())).nome;
-				t.distancia = Convert.ToDouble(dtreader ["distancia"].ToString ());
-				listaDeRetorno.Add(t);
-			}
-			conexao.fecharConexao ();//Fecha Conexao
-			return listaDeRetorno;
-		} */
-
-		public static List<TransportePessoa> ListarDetalhes(string nome){
+			
+		public static List<TransportePessoa> ListarDetalhes(int id){
 			Conexao conexao = new Conexao ();
 			MySqlConnection connection = conexao.abrirConexao ();
 
@@ -92,9 +64,9 @@ namespace Teste
 			Query.CommandText = 
 				@"select p.nome, t.tipo as Transporte, count(t.tipo) as Num_Viagens, sum(t.distancia) as Distancia_Total, sum(t.valor) as Valor_Total from transporte as t
 				inner join pessoa as p on p.id=t.id_pessoa
-				where p.nome = @nome
+				where p.id = @id_pessoa
 				group by t.tipo";
-			Query.Parameters.AddWithValue ("@nome",nome);
+			Query.Parameters.AddWithValue ("@id_pessoa",id);
 			MySqlDataReader dtreader = Query.ExecuteReader();
 			List<TransportePessoa> listaDeRetorno = new List<TransportePessoa>();
 

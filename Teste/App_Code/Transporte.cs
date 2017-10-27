@@ -32,7 +32,6 @@ namespace Teste
 				break;
 			
 			
-				
 			}
 			return t;
 		}

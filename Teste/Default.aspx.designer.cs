@@ -37,11 +37,13 @@ namespace Teste {
 		
 		protected System.Web.UI.WebControls.TextBox numero;
 		
+		protected System.Web.UI.WebControls.Panel termos;
+		
 		protected System.Web.UI.WebControls.CheckBox check;
 		
 		protected System.Web.UI.WebControls.Button cadastrar;
 		
-		protected System.Web.UI.WebControls.Button cancelar;
+		protected System.Web.UI.WebControls.LinkButton cancelar;
 		
 		protected System.Web.UI.WebControls.View aba2;
 		
@@ -72,8 +74,6 @@ namespace Teste {
 		protected System.Web.UI.WebControls.DropDownList dropCidDestino;
 		
 		protected System.Web.UI.WebControls.LinkButton cadastrarTransporte;
-		
-		protected System.Web.UI.WebControls.LinkButton cancelarTransporte;
 		
 		protected System.Web.UI.WebControls.GridView tabelaTransporte;
 		
