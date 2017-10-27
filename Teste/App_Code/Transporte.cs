@@ -8,6 +8,34 @@ namespace Teste
 		{
 			
 		}
+		public static Transporte criarInstancia(string tipo){
+			Transporte t = null;
+			switch (tipo) {
+			case "aviao":
+				t = new Aviao ();
+				break;
+
+			case "onibus":
+				t = new Onibus ();
+				break;
+
+			case "carro":
+				t = new TransporteProprio ();	
+				break;
+
+			case "moto":
+				t = new TransporteProprio ();
+				break;
+
+			case "bicicleta":
+				t = new TransporteProprio ();
+				break;
+			
+			
+				
+			}
+			return t;
+		}
 
 		public string descricaoCliente{ get; set;}
 
@@ -17,16 +45,16 @@ namespace Teste
 
 		public double custo { get; set;}
 
+		public double distancia { get; set;}
+
 		public string origem { get; set;}
 
 		public string destino { get; set;}
 
-		public virtual double calcularValorGasto(string origem, string destino){
+		public virtual double calcularValorGasto(){
 			return 0;
 		}
-			
-	
-				
+						
 	}
 }
 

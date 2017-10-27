@@ -57,17 +57,11 @@ namespace Teste {
 		
 		protected System.Web.UI.WebControls.RadioButtonList listaTransporte;
 		
-		protected System.Web.UI.WebControls.Panel panel1;
+		protected System.Web.UI.WebControls.Panel panelDistancia;
 		
-		protected System.Web.UI.WebControls.TextBox milhas;
+		protected System.Web.UI.WebControls.Label lblDistancia;
 		
-		protected System.Web.UI.WebControls.TextBox valorMilha;
-		
-		protected System.Web.UI.WebControls.Panel panel2;
-		
-		protected System.Web.UI.WebControls.TextBox km;
-		
-		protected System.Web.UI.WebControls.TextBox valorKm;
+		protected System.Web.UI.WebControls.TextBox distancia;
 		
 		protected System.Web.UI.WebControls.DropDownList dropEstOrigem;
 		
@@ -82,5 +76,17 @@ namespace Teste {
 		protected System.Web.UI.WebControls.LinkButton cancelarTransporte;
 		
 		protected System.Web.UI.WebControls.GridView tabelaTransporte;
+		
+		protected System.Web.UI.WebControls.LinkButton detalheTransporte;
+		
+		protected System.Web.UI.ScriptManager js1;
+		
+		protected System.Web.UI.UpdatePanel upPanel;
+		
+		protected System.Web.UI.WebControls.Panel panel;
+		
+		protected System.Web.UI.WebControls.GridView tabelaDetalhes;
+		
+		protected System.Web.UI.WebControls.Button btnVoltar;
 	}
 }

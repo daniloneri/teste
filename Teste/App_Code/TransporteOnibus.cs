@@ -7,14 +7,11 @@ namespace Teste
 		public Onibus ()
 		{
 		}
-
-		public override double calcularValorGasto (string ori, string dest)
+			
+		public override double calcularValorGasto ()
 		{
-			if (ori != dest) {
-				return 70 * 5;
-			} else {
-				return 70 * 2;				
-			}
+			return distancia * 0.40;
+
 		}
 	}
 }

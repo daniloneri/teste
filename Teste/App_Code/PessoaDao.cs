@@ -40,7 +40,7 @@ namespace Teste
 			//MySqlConnection Conexao = new MySqlConnection(CONFIG);
 			MySqlCommand Query = new MySqlCommand();
 			Query.Connection = connection;
-			Query.CommandText = @"select * from pessoa";
+			Query.CommandText = @"select * from pessoa order by nome";
 			//Conexao.Open();//Abre conexão
 			MySqlDataReader dtreader = Query.ExecuteReader();//Crie um objeto do tipo reader para ler os dados do banco
 			List<Pessoa> listaDeRetorno = new List<Pessoa>();//Crie uma lista de pessoa

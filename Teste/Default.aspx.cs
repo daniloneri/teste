@@ -70,14 +70,14 @@ namespace Teste
 				PessoaDao.excluir (p);
 				atualizarTabela ();
 			}
-
+				
 		}
 
 		public void atualizarTabela ()
 		{
 			tabela.DataSource = PessoaDao.listar ();
 			tabela.DataBind ();
-			tabelaTransporte.DataSource = TransporteDao.ListarTransporte ();
+			tabelaTransporte.DataSource = TransporteDao.ListarTransportePessoa ();
 			tabelaTransporte.DataBind ();
 		}
 
@@ -200,78 +200,17 @@ namespace Teste
 		public void btnCadastrarTransporte (object sender, EventArgs args)
 		{
 			Transporte t;
-			string x = dropPessoa.SelectedValue;
-			Pessoa p = PessoaDao.recuperar (Convert.ToInt32 (x));
-			if (listaTransporte.SelectedValue == "aviao") {
-				t = new Aviao ();
-				t.tipo = listaTransporte.SelectedItem.Text;
-				t.origem = dropEstOrigem.Text;
-				t.destino = dropEstDestino.Text;
-				t.custo = t.calcularValorGasto (t.origem, t.destino);
 
-				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
-				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
+			Pessoa p = PessoaDao.recuperar (Convert.ToInt32 (dropPessoa.SelectedValue));
 
-				TransporteDao.inserir (t, p);
+			t = Transporte.criarInstancia (listaTransporte.SelectedValue);
 
-				return;
-
-			} else if (listaTransporte.SelectedValue == "carro") {
-				t = new TransporteProprio ();
-				t.tipo = listaTransporte.SelectedItem.Text;
-				t.origem = dropEstOrigem.Text;
-				t.destino = dropEstDestino.Text;
-				t.custo = t.calcularValorGasto (t.origem, t.destino);
-
-				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
-				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";;
-
-				TransporteDao.inserir (t, p);
-
-				return;
-
-			} else if (listaTransporte.SelectedValue == "moto") {
-				t = new TransporteProprio ();
-				t.tipo = listaTransporte.SelectedItem.Text;
-				t.origem = dropEstOrigem.Text;
-				t.destino = dropEstDestino.Text;
-				t.custo = t.calcularValorGasto (t.origem, t.destino);
-
-				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
-				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
-
-				TransporteDao.inserir (t, p);
-
-				return;
-
-			} else if (listaTransporte.SelectedValue == "bicicleta") {
-				t = new TransporteProprio ();
-				t.tipo = listaTransporte.SelectedItem.Text;
-				t.origem = dropEstOrigem.Text ;
-				t.destino = dropEstDestino.Text;
-				t.custo = t.calcularValorGasto (t.origem, t.destino);
-
-				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
-				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
-
-				TransporteDao.inserir (t, p);
-
-				return;
-
-			} else if (listaTransporte.SelectedValue == "onibus") {
-				t = new Onibus ();
-				t.tipo = listaTransporte.SelectedItem.Text;
-				t.origem = dropEstOrigem.Text;
-				t.destino = dropEstDestino.Text;
-				t.custo = t.calcularValorGasto (t.origem, t.destino);
-
-				t.origem = dropCidOrigem.Text+"("+dropEstOrigem.SelectedValue+")";
-				t.destino = dropCidDestino.Text+"("+dropEstDestino.SelectedValue+")";
-
-				TransporteDao.inserir (t, p);
-
-				return;
-			}
+			t.distancia = Convert.ToInt32(distancia.Text);
+			t.tipo = listaTransporte.SelectedItem.Text;
+			t.custo = t.calcularValorGasto ();
+			t.origem = dropCidOrigem.Text + "(" + dropEstOrigem.SelectedValue + ")";
+			t.destino = dropCidDestino.Text + "(" + dropEstDestino.SelectedValue + ")";
+			TransporteDao.inserir (t, p);
 		}
 
 		public void btnCancelarTransporte (object sender, EventArgs args)
@@ -284,17 +223,34 @@ namespace Teste
 			multiview.ActiveViewIndex = Convert.ToInt32(tabs.Items[e.Index].Value);
 		}
 
-
 		protected void RadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (listaTransporte.SelectedValue == "aviao") {
-				panel1.Visible = true;
-				panel2.Visible = false;
+				lblDistancia.Text = "Milhas";
 			} else {
-				panel2.Visible = true;
-				panel1.Visible = false;
+				lblDistancia.Text = "Km";
 			}
+			panelDistancia.Visible = true;
 
+		}
+
+		protected void tabelaTransporte_RowCommand(object sender, GridViewCommandEventArgs e)
+		{
+			int n = Convert.ToInt32 (e.CommandArgument.ToString());
+			string nome = Server.HtmlDecode(tabelaTransporte.Rows [n].Cells [0].Text);
+
+			if(e.CommandName.Equals("Detalhes"))
+			{
+				panel.Visible = true;
+				tabelaDetalhes.DataSource = TransporteDao.ListarDetalhes(nome);
+				tabelaDetalhes.DataBind ();
+			}
+		}
+
+
+		protected void btnVoltar_Click(object sender, EventArgs e)
+		{
+			panel.Visible = false;
 		}
 
 	}

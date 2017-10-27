@@ -36,6 +36,7 @@
       <HintPath>..\..\..\Documentos\mysql.data.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -241,6 +242,7 @@
     <Compile Include="App_Code\TransporteOnibus.cs" />
     <Compile Include="App_Code\TransporteAereo.cs" />
     <Compile Include="App_Code\TransporteDao.cs" />
+    <Compile Include="App_Code\TransportePessoa.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

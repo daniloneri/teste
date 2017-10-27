@@ -135,32 +135,19 @@
 						</div>  --%>	
 					</div> 				
 				</div>
-				<asp:Panel id="panel1" Visible="false" runat="server">
-				<div class="two fields">
-					<div class="field">
-		    			<label>Milhas</label>
-		    			<asp:TextBox data-validate="" id="milhas" placeholder="Milhas" runat="server" />
-	    			</div>
-	    			<div class="field">
-		    			<label>Valor por Milha</label>
-		    			<asp:TextBox data-validate="" id="valorMilha" placeholder="R$" runat="server" />
-	    			</div>
-	  			</div>
-	  			</asp:Panel>
 
-	  			<asp:Panel id="panel2" Visible="false" runat="server">
-	  			<div class="two fields">
-		  			<div class="field">
-		    			<label>Km</label>
-		    			<asp:TextBox  data-validate="" id="km" placeholder="Km" runat="server" />
-		  			</div>
-		  			<div class="field">
-		    			<label>Valor por Km</label>
-		    			<asp:TextBox  data-validate="" id="valorKm" placeholder="R$" runat="server" />
-		  			</div>
-	  			</div>
-	  			</asp:Panel>
-
+				<asp:Panel id="panelDistancia" runat="server" Visible="false">	  
+					<div class="two fields">
+						<div class="field">
+							<asp:TextBox Visible="false"/>
+						</div>
+						<div class="field">
+			    			<asp:Label id="lblDistancia" runat="server"></asp:Label>
+			    			<asp:TextBox data-validate="" id="distancia" placeholder="Distância" runat="server" />
+		    			</div>
+	    			</div>	  			
+	    		</asp:Panel>
+	    	
 				<div class="two fields">
 					<div class="field">
 						<h3 class="ui header">Origem</h3>
@@ -168,9 +155,9 @@
 					<div class="field">
 						<h3 class="ui header">Destino</h3>
 					</div>
-				</div>
-				<div class="required fields">
-					
+				</div>			
+
+				<div class="required fields">					
 					<div class="four wide field">						
 						<label>Estado</label>
 						<asp:DropDownList CssClass="ui dropdown search" OnSelectedIndexChanged="mudarEstadoOrigem" AutoPostBack="true" id="dropEstOrigem" runat="server">
@@ -250,15 +237,44 @@
 
 				<div class="ui hidden divider"></div>
 
-	  			 <asp:GridView CssClass="ui celled striped table" GridLines="None" id="tabelaTransporte" runat="server" AutoGenerateColumns="false" >
-	  				<Columns>   
-	  					<asp:BoundField DataField="descricaoCliente" HeaderText="Nome"/>
-           				<asp:BoundField DataField="tipo" HeaderText="Tipo de Transporte" />
-           				<asp:BoundField DataField="origem" HeaderText="Origem" /> 
-           				<asp:BoundField DataField="destino" HeaderText="Destino" /> 
-           				<asp:BoundField DataField="custo" DataFormatString="{0:C2}" HeaderText="Valor Gasto" /> 
+	  			 <asp:GridView CssClass="ui celled striped table" GridLines="None" id="tabelaTransporte" runat="server" AutoGenerateColumns="false" OnRowCommand="tabelaTransporte_RowCommand" >
+	  				<Columns> 
+	  					<asp:BoundField DataField="nome" HeaderText="Nome"/>
+					    <asp:BoundField DataField="valorTotal" DataFormatString="{0:C2}" HeaderText="Gastos Totais"/>
+           				<asp:TemplateField>           				
+                			<ItemTemplate>
+                    			<asp:LinkButton id="detalheTransporte" runat="server" data-tooltip="Detalhes" CommandArgument="<%# Container.DataItemIndex %>" CommandName="Detalhes"><i class=" large file text outline icon"></i></asp:LinkButton>
+                   			</ItemTemplate>
+                			<ItemStyle CssClass="ui center aligned"/>
+            			</asp:TemplateField>         			
           			</Columns>
-    			</asp:GridView> 
+    			</asp:GridView>	
+
+    			<asp:ScriptManager runat="server" ID="js1" EnableScriptGlobalization="true" EnableScriptLocalization="true" EnablePartialRendering="true">
+                </asp:ScriptManager> 	
+
+    			<asp:UpdatePanel id="upPanel" runat="server">
+    				<ContentTemplate>
+    					<asp:Panel id="panel" runat="server" Visible="false">
+    						<div class="ui dimmer modals page transition visible active" style="display: block !important;">
+                                 <div class="ui modal transition visible active scrolling" style="display: block !important; top: 0px;">
+                                	<asp:GridView CssClass="ui celled striped table" GridLines="None" id="tabelaDetalhes" runat="server" AutoGenerateColumns="false" >
+	  									<Columns>	  					
+					           				<asp:BoundField DataField="tipo" HeaderText="Tipo de Transporte"/>
+					           				<asp:BoundField DataField="numeroViagens" HeaderText="Número de Viagens"/> 
+					           				<asp:BoundField DataField="distanciaTotal" HeaderText="Distância Total"/> 
+					           				<asp:BoundField DataField="valorTotal" DataFormatString="{0:C2}" HeaderText="Valor Total"/>
+					          			</Columns>
+    								</asp:GridView>
+    								<div class="ui hidden divider"></div>		   
+    								<asp:Button Text="Voltar" CssClass="ui inverted green button" id="btnVoltar" OnClick="btnVoltar_Click" runat="server"/>
+    							</div>
+    						</div>
+    					</asp:Panel>
+    			</ContentTemplate>
+
+    			</asp:UpdatePanel>
+    					    					    					    					    			
 				</asp:View>
 				</div>
 				</asp:MultiView>

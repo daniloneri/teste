@@ -8,23 +8,26 @@ namespace Teste
 		{
 		}
 
-		public override double calcularValorGasto (string ori, string dest)
+		public override double calcularValorGasto ()
 		{
-			if (tipo == "Bicicleta") {
-				return 0;
-			} else if (tipo == "Carro") {
-				if (ori != dest) {
-					return 100 * 5;
-				} else {
-					return 100 * 2;				
-				}
-			} else {
-				if (ori != dest) {
-					return 50 * 5;
-				} else {
-					return 50 * 2;				
-				}
+			double valor = 0;
+			
+			switch (tipo) {
+			case "Bicicleta":
+				valor = 0;
+				break;
+			case "Onibus":
+				valor = 0.40 * distancia;
+				break;
+			case "Carro":
+				valor = 0.30 * distancia;
+				break;
+			case "Moto":
+				valor = 0.15 * distancia;
+				break;
 			}
+				
+			return valor;
 		}
 
 	}

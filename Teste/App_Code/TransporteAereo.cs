@@ -8,13 +8,10 @@ namespace Teste
 		{
 		}
 
-		public override double calcularValorGasto (string ori, string dest)
+		public override double calcularValorGasto ()
 		{
-			if (ori != dest) {
-				return 100 * 5;
-			} else {
-				return 100 * 2;				
-			}
+			return distancia * 0.50;
+		
 		}
 
 
